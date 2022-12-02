@@ -45,7 +45,7 @@ stemmer = PorterStemmer()
 # text preprocessing function declaration
 def preprocess(tweet):
 # removal of extra spaces
-regex_pat = re.compile(r'\s+')
+ regex_pat = re.compile(r'\s+')
 tweet_space = tweet.str.replace(regex_pat, ' ')
 # removal of @name[mention]
 regex_pat = re.compile(r'@[\w\-]+')
