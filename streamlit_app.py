@@ -90,7 +90,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=14, test_
 # ignore warnings setting on
 warnings.simplefilter(action='ignore', category=FutureWarning)
 # apply SMOTE oversampling to improve detection of hateful speech
-smt = SMOTE( sampling_strategy={'Hateful':15367,'Offensive':15367,'Neither hateful nor
+ smt = SMOTE( sampling_strategy={'Hateful':15367,'Offensive':15367,'Neither hateful nor
 offensive':15367}, k_neighbors=2, random_state=1)
 X_train_smt, y_train_smt = smt.fit_resample(X_train,y_train)
 # create final model after applying hypertuning parameter
