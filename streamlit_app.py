@@ -71,7 +71,7 @@ tokenized_tweet= tokenized_tweet.apply(lambda x: [item for item in x if item not
 # stemming of the tweets
 tokenized_tweet = tokenized_tweet.apply(lambda x: [stemmer.stem(i) for i in x])
 for i in range(len(tokenized_tweet)):
-tokenized_tweet[i] = ' '.join(tokenized_tweet[i])
+ tokenized_tweet[i] = ' '.join(tokenized_tweet[i])
 tweets_p= tokenized_tweet
 return tweets_p
 # collecting only the tweets from the csv file into a variable name tweet
