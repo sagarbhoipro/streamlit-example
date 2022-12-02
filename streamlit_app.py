@@ -90,21 +90,19 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=14, test_
 # ignore warnings setting on
 warnings.simplefilter(action='ignore', category=FutureWarning)
 # apply SMOTE oversampling to improve detection of hateful speech
- smt = SMOTE( sampling_strategy={'Hateful':15367,'Offensive':15367,'Neither hateful nor
-offensive':15367}, k_neighbors=2, random_state=1)
-X_train_smt, y_train_smt = smt.fit_resample(X_train,y_train)
+ smt = SMOTE( sampling_strategy={'Hateful':15367,'Offensive':15367,'Neither hateful nor offensive':15367}, k_neighbors=2, random_state=1)
+   X_train_smt, y_train_smt = smt.fit_resample(X_train,y_train)
 # create final model after applying hypertuning parameter
-final_model = LogisticRegression(multi_class='multinomial', solver='saga', penalty='l2',C=1,max_iter =
-1000)
+   final_model = LogisticRegression(multi_class='multinomial', solver='saga', penalty='l2',C=1,max_iter =1000)
 final_model.fit(X_train_smt,y_train_smt)
 def hate_speech_detection():
 import streamlit as st
 st.title("Hate Speech Detection")
 user = st.text_area("Please enter the Tweet to be analyzed:")
 if len(user) < 1:
-st.write(" ")
+    st.write(" ")
 else:
-sample = user
+    sample = user
 data = tfidf_vectorizer.transform([sample]).toarray()
 a = final_model.predict(data)
 st.subheader("This Tweet is: "+ str(a))
